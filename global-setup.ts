@@ -6,7 +6,7 @@ const password: any = process.env.PASSWORD;
 const baseUrl: any = process.env.BASEURL;
 
 async function otpAuthentication() {
-  const browser = await chromium.launch({headless: false});
+  const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
   let totp = new OTPAuth.TOTP({
