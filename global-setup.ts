@@ -1,19 +1,23 @@
 import { chromium, expect } from "@playwright/test";
 import * as OTPAuth from "otpauth";
 
+const username: any = process.env.USER_NAME;
+const password: any = process.env.PASSWORD;
+const baseUrl: any = process.env.BASEURL;
+
 async function otpAuthentication() {
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({headless: false});
   const context = await browser.newContext();
   const page = await context.newPage();
   let totp = new OTPAuth.TOTP({
     issuer: "Microsoft",
     secret: "c6cpxv2ptyk7fyt7",
   });
-  await page.goto("https://hah-ce-ptntapp-test1.crm11.dynamics.com");
-  await page.locator('[type="email"]').fill("Ruchika.Kandpal@hah.co.uk");
+  await page.goto(baseUrl);
+  await page.locator('[type="email"]').fill(username);
   await page.locator('[type="submit"]').click();
   expect(page.locator(".logoImage]")).toBeVisible;
-  await page.locator('[id="passwordInput"]').fill("Healthcare24");
+  await page.locator('[id="passwordInput"]').fill(password);
   await page.locator('[id="submitButton"]').click();
   await page
     .getByText(`I can't use my Microsoft Authenticator app right now`)
