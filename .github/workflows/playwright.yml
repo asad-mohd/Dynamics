@@ -21,8 +21,6 @@ jobs:
         USER_NAME: ${{ secrets.USER_NAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
         BASEURL: ${{ secrets.BASEURL }}
-         
-         
     - name: Run Playwright tests
       run: yarn test
     - uses: actions/upload-artifact@v4
