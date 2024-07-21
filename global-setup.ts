@@ -6,7 +6,8 @@ const username: any = process.env.USER_NAME;
 const password: any = process.env.PASSWORD;
 
 async function otpAuthentication(config: FullConfig) {
-  const { baseURL } :  any = config.projects[0].use;
+  const { baseURL } :  any = config.projects[1].use;
+  console.log(baseURL)
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
