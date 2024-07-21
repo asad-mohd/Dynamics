@@ -17,11 +17,16 @@ jobs:
       run: yarn install
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Run gl4b Playwright tests
+      run: yarn test:gl4b src/tests/creatContactWithReferral.spec.ts
+      env:
+        USER_NAME: ${{ secrets.USER_NAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}    
+    - name: Run cptest Playwright tests
+      run: yarn test:cptest src/tests/createContact.spec.ts
       env:
         USER_NAME: ${{ secrets.USER_NAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
-    - name: Run Playwright tests
-      run: yarn test
     - uses: actions/upload-artifact@v4
       if: always()
       with:
