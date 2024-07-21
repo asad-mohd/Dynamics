@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test:cptest": "npx playwright test --project=CPTest",
+    "test:gl4b": "npx playwright test --project=GL4B"
   },
   "keywords": [],
   "author": "",

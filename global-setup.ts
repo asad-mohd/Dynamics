@@ -1,11 +1,12 @@
 import { chromium, expect } from "@playwright/test";
 import * as OTPAuth from "otpauth";
+import { FullConfig } from '@playwright/test';
 
 const username: any = process.env.USER_NAME;
 const password: any = process.env.PASSWORD;
-const baseUrl: any = process.env.BASEURL;
 
-async function otpAuthentication() {
+async function otpAuthentication(config: FullConfig) {
+  const { baseURL } :  any = config.projects[0].use;
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
@@ -13,7 +14,7 @@ async function otpAuthentication() {
     issuer: "Microsoft",
     secret: "c6cpxv2ptyk7fyt7",
   });
-  await page.goto(baseUrl);
+  await page.goto(baseURL);
   await page.locator('[type="email"]').fill(username);
   await page.locator('[type="submit"]').click();
   expect(page.locator(".logoImage]")).toBeVisible;
