@@ -54,7 +54,11 @@ export default defineConfig({
         baseURL: 'https://hah-ce-gl4b-e2e.crm11.dynamics.com',
         browserName: 'chromium',
       },
-    },
+    },   
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
+      },
   ],
 
   /* Run your local dev server before starting the tests */

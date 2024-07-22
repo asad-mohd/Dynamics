@@ -11,7 +11,7 @@ test(`check-microsoft-login`, async ({ page }) => {
       issuer: "Microsoft",
       secret: "c6cpxv2ptyk7fyt7",
     });
-    await page.goto(`/main.aspx?appid=003ada10-09b4-ea11-a812-000d3a7ed588`);
+    await page.goto(`https://hah-ce-gl4b-e2e.crm11.dynamics.com/main.aspx?appid=003ada10-09b4-ea11-a812-000d3a7ed588`);
     await page.locator('[type="email"]').fill(username);
     await page.locator('[type="submit"]').click();
     // expect(page.locator('[id="contentWrapper"]')).toBeVisible({timeout: 60000});
