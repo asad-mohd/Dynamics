@@ -31,7 +31,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: "html",
   use: {
-    trace: "on",
+    trace: "retain-on-failure",
     storageState: "loginAuth.json",
     video: "retain-on-failure",
     screenshot: {
