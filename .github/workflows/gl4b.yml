@@ -21,7 +21,8 @@ jobs:
     - name: Playwright browser install
       run: yarn playwright install chromium
     - name: Run gl4b Playwright tests
-      run: yarn test:gl4b src/tests/creatContactWithReferral.spec.ts
+      run: |
+        yarn test:gl4b
       env:
         USER_NAME: ${{ secrets.USER_NAME }}
         PASSWORD: ${{ secrets.PASSWORD }}    
@@ -32,6 +33,3 @@ jobs:
         path: |
             test-results/**
         retention-days: 5
-  CPTEST:
-     needs: [gl4b_test]
-     uses: ./.github/workflows/cptest.yaml
