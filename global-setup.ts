@@ -21,7 +21,7 @@ async function otpAuthentication(config: FullConfig) {
   expect(page.locator(".logoImage]")).toBeVisible;
   await page.waitForTimeout(3000);
   console.log(password);
-  await page.locator('[id="passwordInput"]').fill(password);
+  await page.locator('[id="passwordInput"]').fill("Healthcare24");
   await page.locator('[id="submitButton"]').click();
   await page
     .getByText(`I can't use my Microsoft Authenticator app right now`)
