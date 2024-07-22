@@ -12,7 +12,7 @@ dotenv.config({ path: path.resolve(".env") });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  // globalSetup: "./global-setup",
+  globalSetup: "./global-setup",
   testDir: "./src/tests",
   // Timeout for each test, includes test, hooks and fixtures:
   timeout: 2 * 60 * 1000,
@@ -32,7 +32,7 @@ export default defineConfig({
   reporter: "html",
   use: {
     trace: "retain-on-failure",
-    // storageState: "loginAuth.json",
+    storageState: "loginAuth.json",
     video: "retain-on-failure",
     screenshot: {
       mode: "only-on-failure",
@@ -55,10 +55,6 @@ export default defineConfig({
         browserName: 'chromium',
       },
     },   
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-      },
   ],
 
   /* Run your local dev server before starting the tests */

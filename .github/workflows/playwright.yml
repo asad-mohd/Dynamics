@@ -21,16 +21,16 @@ jobs:
     - name: Playwright browser install
       run: yarn playwright install chromium
     - name: Run gl4b Playwright tests
-      run: yarn test src/tests/check.spec.ts --project=chromium
+      run: yarn test:gl4b src/tests/creatContactWithReferral.spec.ts
       env:
         USER_NAME: ${{ secrets.USER_NAME }}
         PASSWORD: ${{ secrets.PASSWORD }}    
-    # - name: Run cptest Playwright tests
-    #   if: always()
-    #   run: yarn test:cptest src/tests/createContact.spec.ts
-    #   env:
-    #     USER_NAME: ${{ secrets.USER_NAME }}
-    #     PASSWORD: ${{ secrets.PASSWORD }}
+    - name: Run cptest Playwright tests
+      if: always()
+      run: yarn test:cptest src/tests/createContact.spec.ts
+      env:
+        USER_NAME: ${{ secrets.USER_NAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
     - uses: actions/upload-artifact@v4
       if: always()
       with:

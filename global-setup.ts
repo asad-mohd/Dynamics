@@ -7,7 +7,6 @@ const password: any = process.env.PASSWORD;
 
 async function otpAuthentication(config: FullConfig) {
   const { baseURL } :  any = config.projects[1].use;
-  console.log(baseURL)
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
@@ -18,17 +17,6 @@ async function otpAuthentication(config: FullConfig) {
   await page.goto(baseURL);
   await page.locator('[type="email"]').fill(username);
   await page.locator('[type="submit"]').click();
-  // expect(page.locator('[id="contentWrapper"]')).toBeVisible({timeout: 60000});
-  await page.waitForLoadState("domcontentloaded");
-  console.log(password);
-  try {
-    await page.locator('//*[@id="passwordArea"]').waitFor({ state: 'visible', timeout: 60000 });
-    await page.locator('//*[@id="passwordArea"]').click();
-  } catch (e) {
-    console.error("Password area not found:", e);
-    await page.screenshot({ path: 'password_area_not_found.png' });
-    throw e;
-  }
   await page.locator('//*[@id="passwordArea"]').click();
   await page.locator('[id="passwordInput"]').fill("Healthcare24");
   await page.locator('[id="submitButton"]').click();
