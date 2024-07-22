@@ -51,7 +51,7 @@ export class createContact {
     this.newContact = page.locator('[data-id="header_title"]');
     this.basicInfoContainer = page.locator('[aria-label="BASIC INFORMATION"]');
     this.gender = 'input[aria-label="Gender, Lookup"]';
-    this.genderResults = page.waitForSelector('[aria-label="Lookup results"]');
+    this.genderResults = '[aria-label="Lookup results"]';
     this.genderResultsData = '[aria-label="Lookup results"] li';
     this.primarylanguage = page.locator(
       '[aria-label="BASIC INFORMATION"] [data-id="mzk_patientlanguage"]'
@@ -124,7 +124,7 @@ export class createContact {
     await this.basicInfoContainer.getByLabel("First Name").fill(FirstName);
     await this.basicInfoContainer.getByLabel("Last Name").fill(lastName);
     await this.basicInfoContainer.locator(this.gender).fill("Male");
-    await this.genderResults;
+    await this.page.waitForSelector(this.genderResults);
     const genderOption = await this.page.$$(this.genderResultsData);
     await genderOption[0].click(); // Male
     await this.primarylanguage.scrollIntoViewIfNeeded();
