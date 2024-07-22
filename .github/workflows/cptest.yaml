@@ -1,11 +1,10 @@
-name: Playwright Tests
+name: CPTEST Tests
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  workflow_call:
+    
+
 jobs:
-  test:
+  cptest:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
