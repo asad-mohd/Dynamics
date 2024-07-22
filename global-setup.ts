@@ -19,9 +19,9 @@ async function otpAuthentication(config: FullConfig) {
   await page.locator('[type="email"]').fill(username);
   await page.locator('[type="submit"]').click();
   // expect(page.locator('[id="contentWrapper"]')).toBeVisible({timeout: 60000});
-  await page.waitForTimeout(3000);
+  await page.waitForLoadState("domcontentloaded");
   console.log(password);
-  await page.locator('[id="passwordInput"]').click();
+  await page.locator('//*[@id="passwordArea"]').click();
   await page.locator('[id="passwordInput"]').fill("Healthcare24");
   await page.locator('[id="submitButton"]').click();
   await page
