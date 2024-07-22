@@ -33,4 +33,5 @@ jobs:
             test-results/**
         retention-days: 5
   CPTEST:
+     needs: [gl4b_test]
      uses: ./.github/workflows/cptest.yaml
