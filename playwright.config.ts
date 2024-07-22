@@ -32,7 +32,7 @@ export default defineConfig({
   reporter: "html",
   use: {
     trace: "retain-on-failure",
-    storageState: "loginAuth.json",
+    // storageState: "loginAuth.json",
     video: "retain-on-failure",
     screenshot: {
       mode: "only-on-failure",
