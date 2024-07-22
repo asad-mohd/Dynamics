@@ -8,7 +8,7 @@ const password: any = process.env.PASSWORD;
 async function otpAuthentication(config: FullConfig) {
   const { baseURL } :  any = config.projects[1].use;
   console.log(baseURL)
-  const browser = await chromium.launch();
+  const browser = await chromium.launch({headless: false});
   const context = await browser.newContext();
   const page = await context.newPage();
   let totp = new OTPAuth.TOTP({
@@ -21,6 +21,7 @@ async function otpAuthentication(config: FullConfig) {
   // expect(page.locator('[id="contentWrapper"]')).toBeVisible({timeout: 60000});
   await page.waitForTimeout(3000);
   console.log(password);
+  await page.locator('[id="passwordInput"]').click();
   await page.locator('[id="passwordInput"]').fill("Healthcare24");
   await page.locator('[id="submitButton"]').click();
   await page
