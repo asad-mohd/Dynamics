@@ -21,7 +21,7 @@ jobs:
     - name: Playwright browser install
       run: yarn playwright install chromium
     - name: Run gl4b Playwright tests
-      run: yarn test:gl4b src/tests/creatContactWithReferral.spec.ts
+      run: yarn test src/tests/check.spec.ts  --headed --project=GL4B
       env:
         USER_NAME: ${{ secrets.USER_NAME }}
         PASSWORD: ${{ secrets.PASSWORD }}    
@@ -37,8 +37,4 @@ jobs:
         name: playwright-report
         path: |
             test-results/**
-            report/
-            trace/
-            videos/
-            screenshots/
         retention-days: 5
