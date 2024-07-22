@@ -21,6 +21,14 @@ async function otpAuthentication(config: FullConfig) {
   // expect(page.locator('[id="contentWrapper"]')).toBeVisible({timeout: 60000});
   await page.waitForLoadState("domcontentloaded");
   console.log(password);
+  try {
+    await page.locator('//*[@id="passwordArea"]').waitFor({ state: 'visible', timeout: 60000 });
+    await page.locator('//*[@id="passwordArea"]').click();
+  } catch (e) {
+    console.error("Password area not found:", e);
+    await page.screenshot({ path: 'password_area_not_found.png' });
+    throw e;
+  }
   await page.locator('//*[@id="passwordArea"]').click();
   await page.locator('[id="passwordInput"]').fill("Healthcare24");
   await page.locator('[id="submitButton"]').click();
