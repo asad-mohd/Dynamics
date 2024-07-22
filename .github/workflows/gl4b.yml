@@ -22,7 +22,8 @@ jobs:
       run: yarn playwright install chromium
     - name: Run gl4b Playwright tests
       run: |
-        yarn test:gl4b
+        yarn test:gl4b src/tests/creatContactWithReferral.spec.ts
+        yarn test:cptest src/tests/createContact.spec.ts
       env:
         USER_NAME: ${{ secrets.USER_NAME }}
         PASSWORD: ${{ secrets.PASSWORD }}    
