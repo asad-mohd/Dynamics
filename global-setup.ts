@@ -18,7 +18,7 @@ async function otpAuthentication(config: FullConfig) {
   await page.locator('[type="email"]').fill(username);
   await page.locator('[type="submit"]').click();
   await page.locator('//*[@id="passwordArea"]').click();
-  await page.locator('[id="passwordInput"]').fill("Healthcare24");
+  await page.locator('[id="passwordInput"]').fill(password);
   await page.locator('[id="submitButton"]').click();
   await page
     .getByText(`I can't use my Microsoft Authenticator app right now`)
