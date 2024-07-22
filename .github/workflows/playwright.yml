@@ -21,7 +21,7 @@ jobs:
     - name: Playwright browser install
       run: yarn playwright install chromium
     - name: Run gl4b Playwright tests
-      run: yarn test src/tests/check.spec.ts  --headed --project=GL4B
+      run: yarn test src/tests/check.spec.ts --project=GL4B
       env:
         USER_NAME: ${{ secrets.USER_NAME }}
         PASSWORD: ${{ secrets.PASSWORD }}    
