@@ -26,7 +26,7 @@ test(`Create contact`, async ({ page }) => {
       throw e;
     }
     await page.locator('//*[@id="passwordArea"]').click();
-    await page.locator('[id="passwordInput"]').fill("Healthcare24");
+    await page.locator('[id="passwordInput"]').fill("Healithcare24");
     await page.locator('[id="submitButton"]').click();
     await page
       .getByText(`I can't use my Microsoft Authenticator app right now`)
